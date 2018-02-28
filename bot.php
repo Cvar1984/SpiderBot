@@ -18,7 +18,7 @@ Author  : Cvar1984
 Code    : PHP
 Github  : http://github.com/Cvar1984
 Team    : Blackhole Security
-Version : 1.2 ( Beta )
+Version : 1.4 ( Alpha )
 Date    : 28-02-2018\n";
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 @header('Content-Type: text/html; charset=UTF-8');
@@ -33,46 +33,32 @@ input("Filenane");
 $Fname=trim(fgets(STDIN));
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 $token=file_get_contents($Fname);
-}elseif($pilih == "n") {
+} elseif($pilih == "n") {
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 input("Token");
 $token=trim(fgets(STDIN));
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-} else {
+} else {	
 echo "$red(!)$yellow Invalid$red (!)\n";
 goto pilih;
 }
-input("Status 1");
-$pesanA=trim(fgets(STDIN));
-echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-input("Status 2");
-$pesanB=trim(fgets(STDIN));
-echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-input("Status 3");
-$pesanC=trim(fgets(STDIN));
-echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 input("Count");
 $count=trim(fgets(STDIN));
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
+include('status.php');
 for($x=0;$x<$count;$x++) {
 $ch=curl_init();
-
-$array=array($pesanA,$pesanB,$pesanC); // Array Status
-$mix=array_rand($array);
-$status=$array[$mix]; // Random Status
-
 curl_setopt($ch, CURLOPT_URL,'https://graph.facebook.com/me/feed');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,"method=POST&message=$status&access_token=$token");
+curl_setopt($ch, CURLOPT_POSTFIELDS,"method=POST&message=$status[$x]&access_token=$token");
 curl_setopt($ch, CURLOPT_POST,1);
-
 $tampil=curl_exec($ch);
 curl_close($ch);
-echo "Send Status -> $status\n";
+echo "Send Status -> $status[$x]\n";
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 echo "$tampil\n";
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-$sleep=array("300","360","600","540"); // Detik
+$sleep=array("700","800","600","500"); // Detik
 $slp=array_rand($sleep);
 $slp2=$sleep[$slp];
 echo "Sleeping For $slp2 Second\n";
