@@ -52,11 +52,15 @@ for($x = 0; $x < $count; $x++) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, "method=POST&message=$status[$x]&access_token=$token");
     curl_setopt($ch, CURLOPT_POST, 1);
-    $tampil = curl_exec($ch);
+    $tampil=curl_exec($ch);
     curl_close($ch);
     echo "Send Status -> $status[$x]\n";
     echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-    echo "$tampil\n";
+    if(preg_match('/true/', $tampil)) {
+    	echo "Status Updated\n";
+    	} else {
+    	echo $yellow . "(!)Check Your Acces Token(!)\n";
+    	}
     echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
     $sleep = array(
         "700",
