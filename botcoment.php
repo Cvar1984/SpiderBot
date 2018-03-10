@@ -5,6 +5,9 @@ $bersih="cls";
 } else {
 $bersih="clear";
 }
+
+date_default_timezone_set('Asia/Jakarta');
+$date   = date('d-M-Y h:i:s');
 $green  = "\e[92m";
 $red    = "\e[91m";
 $yellow = "\e[93m";
@@ -30,6 +33,12 @@ echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 function input($echo) {
     echo "$echo --> ";
 }
+input("Comentar");
+$msgx=trim(fgets(STDIN));
+echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
+input("Count");
+$jumlah=trim(fgets(STDIN));
+echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
 input("Input Token From File / Paste? [y/n]");
 $pilih = trim(fgets(STDIN));
 if($pilih == "y") {
@@ -47,17 +56,15 @@ if($pilih == "y") {
     echo "$red(!)$yellow Invalid$red (!)$green\n";
     goto pilih;
 }
-$jumlah="1"; // Biar Gampang otak atik
-include("files/status.php");
 $ambil = "https://graph.facebook.com/me/home?fields=id,from,type&limit=".$jumlah."&access_token=".$token;
 $ambil = file_get_contents($ambil);
 $ambil = json_decode($ambil, true);
 foreach($ambil['data'] as $data) {
 	$stat_id = $data['id'];
 	$post_id = explode("_", $stat_id);
+	$msg=$msgx . "\n"."-=[ ".$date." ]=-";
 	$url = "https://graph.facebook.com/".$post_id[1]."/comments";
-foreach($status as $status) {
-$var="method=POST&message=".$status."&access_token=".$token;	
+$var="method=POST&message=".$msg."&access_token=".$token;	
 	
 	   $ch=curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
@@ -66,7 +73,7 @@ $var="method=POST&message=".$status."&access_token=".$token;
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$result = curl_exec($ch);
 		curl_close($ch);
-echo "Comment => $status\n";
+echo "Comment => $msg\n";
 if(preg_match('/error/', $result)) {
      die("$red(!)$yellow Token Invalid$red (!)");
 		} else {
@@ -84,6 +91,6 @@ if(preg_match('/error/', $result)) {
     echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
     sleep($slp2);
 		}
-		}
-		}
+	}
+	unset($data);
 ?>
