@@ -45,7 +45,7 @@ if($pilih == "y") {
 input("Count");
 $count = trim(fgets(STDIN));
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
-include('status.php');
+include('files/status.php');
 for($x = 0; $x < $count; $x++) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/me/feed');
