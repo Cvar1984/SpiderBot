@@ -30,6 +30,7 @@ function input($echo) {
 }
 input("Chat Id");
 $cid=trim(fgets(STDIN));
+hell:
 input("Quote / Text [q/t]");
 $tipe=trim(fgets(STDIN));
 echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
@@ -65,15 +66,20 @@ $postdata="chat_id={$cid}&photo={$jpg[$x%$n]}&caption={$status[$x%$c]}";
     curl_setopt($ch, CURLOPT_POST, 1);
     $tampil=curl_exec($ch);
     curl_close($ch);
+    if($status == "/back") {
+    	goto hell; // Use "/back" for back to menu
+    }
     if($back == "true") {
-    echo "Send Status -> ".$status."\n";
+    echo "Send Text -> ".$status."\n";
     echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
     } else {
-    echo "Send Status -> ".$status[$x]."\n";
+    echo "Send Quote -> ".$status[$x]."\n";
     echo "$red=========================== Cvar1984 ))=====(@)>$green\n";
     }
     if(preg_match("/true/", $tampil)) {
-    	echo "Status Updated\n";
+    	date_default_timezone_set('Asia/Jakarta');
+    	$date = date("H:i:s");
+    	echo "[ ".$date." ] Status Updated\n";
     	} else {
     	die($yellow . "(!) Check Your Post Data (!)\n");
     	}
