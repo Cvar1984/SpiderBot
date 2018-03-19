@@ -7,7 +7,7 @@ $bersih="clear";
 }
 
 date_default_timezone_set('Asia/Jakarta');
-$date   = date('d-M-Y h:i:s');
+$date   = date('d-M-Y H:i:s');
 $green  = "\e[92m";
 $red    = "\e[91m";
 $yellow = "\e[93m";
@@ -75,9 +75,9 @@ $var="method=POST&message=".$msg."&access_token=".$token;
 		curl_close($ch);
 echo "Comment => $msg\n";
 if(preg_match('/error/', $result)) {
-     die("$red(!)$yellow Token Invalid$red (!)");
+     die("$red(!)$yellow Token Invalid$red (!)\n");
 		} else {
-	echo "Post ID => $post_id[1]"."\n";
+	echo "Post ID =>".$post_id[1]."\n";
 	echo "Send Comment Success!\n";
 	$sleep = array(
         "5",

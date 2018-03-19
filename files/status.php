@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
-$date = date("H:i:s");
+$date = date("d-M-Y H:i:s");
 $status = array(
     "Jika cinta itu Array, maka, cintaku padamu tak pernah empty jika di unset().
 ([ $date ])",
